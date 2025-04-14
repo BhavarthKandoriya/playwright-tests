@@ -15,7 +15,7 @@ test.describe('', () => {
       const commonPage = poManager.getCommonPage();
       await commonPage.navigateToUrl();
       const loginPage = await commonPage.clickLogInLink(poManager);
-      const productPage = await loginPage.accountLogin(poManager, 'techcipher@gmail.com', 'test@123');
+      const productPage = await loginPage.accountLogin(poManager, 'username', 'test@123');
       const productDetailsPage = await productPage.openProductDetails(poManager);
       await productDetailsPage.addToCart();
       const cartPage = await commonPage.clickCartLink(poManager);
