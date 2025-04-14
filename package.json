@@ -1,0 +1,27 @@
+{
+    "name": "playwright",
+    "version": "1.0.0",
+    "description": "Playwright e2e tests",
+    "main": "playwright.config.js",
+    "directories": {
+      "test": "tests"
+    },
+    "scripts": {
+      "test": "npx playwright test --headed",
+      "lint": "eslint . --ext .ts",
+      "lint-and-fix": "eslint . --ext .ts --fix",
+      "prettier-format": "prettier --config .prettierrc **/*.ts --write"
+    },
+    "author": "Techcipher",
+    "license": "ISC",
+    "dependencies": {
+      "@playwright/test": "^1.43.1",
+      "@slack/web-api": "^7.0.4",
+      "@types/node": "^20.12.8",
+      "axios": "^1.6.8",
+      "junit-report-merger": "^7.0.0",
+      "playwright": "^1.43.1",
+      "tsx": "^4.9.3",
+      "typescript": "^5.4.5"
+    }
+  }
