@@ -17,7 +17,7 @@ tools:
   playwright:
 
 network:
-  allowed: [defaults, node]
+  allowed: [defaults, node, playwright, "*.demoblaze.com"]
 
 safe-outputs:
   create-pull-request:
