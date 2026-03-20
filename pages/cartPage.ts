@@ -10,8 +10,9 @@ export class CartPage {
   readonly creditCardInput: string = '#card';
   readonly purchaseButton: string = '//button[text()="Purchase"]';
   readonly successMessage: string = '//h2[text()="Thank you for your purchase!"]';
-  readonly cardDetails: string = '//p[contains(@class,"lead text-muted")]';
-  readonly userDetails: string = '//p[contains(@class,"lead text-muted")]';
+  // Card details and user details are in separate <p> elements with class "lead text-muted"
+  readonly cardDetails: string = '//p[contains(@class,"lead text-muted")][contains(text(),"Card")]';
+  readonly userDetails: string = '//p[contains(@class,"lead text-muted")][contains(text(),"Name")]';
   playwrightActions: PlaywrightActions;
   playwrightAssertions: PlaywrightAssertions;
 

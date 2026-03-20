@@ -11,7 +11,7 @@ export class ProductDetailsPage {
   readonly continueButton: string = '[id="continue_button"]';
   readonly passwordInput: string = '[id="password-input"]';
   readonly profileLink: string = '[data-id="profile_link"]';
-  readonly accountExistLink : string = 'text="Already have an account?"';
+  readonly accountExistLink : string = '//a:has-text("Already have an account?")';
   readonly getStartedButton: string = 'a:text("Get started")';
   playwrightActions: PlaywrightActions;
   playwrightAssertions: PlaywrightAssertions;
