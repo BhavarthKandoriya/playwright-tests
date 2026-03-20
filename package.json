@@ -7,7 +7,7 @@
         "test": "tests"
     },
     "scripts": {
-        "test": "npx playwright test --headed",
+        "test": "xvfb-run npx playwright test --headed",
         "lint": "eslint . --ext .ts",
         "lint-and-fix": "eslint . --ext .ts --fix",
         "prettier-format": "prettier --config .prettierrc **/*.ts --write"
