@@ -37,7 +37,7 @@ steps:
     run: npx playwright install --with-deps
 
 network:
-  allowed: [defaults, node, playwright, "*.demoblaze.com"]
+  allowed: [defaults, node, playwright, demoblaze.com]
 
 safe-outputs:
   create-pull-request:
