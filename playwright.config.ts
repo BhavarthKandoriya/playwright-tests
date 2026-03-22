@@ -4,7 +4,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 const config: PlaywrightTestConfig = {
   timeout: 50000,
   fullyParallel: true,
-  reporter: [['html', { open: 'never' }], ['blob'], ['json', { outputFile: 'results.json' }]],
+  reporter: [['html', { open: 'never' }], ['github'], ['blob'], ['json', { outputFile: 'results.json' }]],
   testMatch: '*.*.ts',
   projects: [
     {
