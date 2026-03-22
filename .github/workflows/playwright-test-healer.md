@@ -12,16 +12,39 @@ permissions:
   actions: read
 
 tools:
+  bash: true
+  edit:
+  write: true
   github:
-    toolsets: [default]
+    toolsets: [repos, issues, pull_requests, actions]
   playwright:
+
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v4
+    with:
+      persist-credentials: false
+      
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '18'
+      
+  - name: Install dependencies
+    run: npm ci
+      
+  - name: Install Playwright browsers
+    run: npx playwright install --with-deps
 
 network:
   allowed: [defaults, node, playwright, "*.demoblaze.com"]
 
 safe-outputs:
   create-pull-request:
-    max: 1
+    title-prefix: "[fixed-tests]"
+    labels: [enhancement, automated]
+    protected-files: fallback-to-issue
+  noop: {}
   add-comment:
     max: 3
 
