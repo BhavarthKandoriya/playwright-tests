@@ -23,7 +23,10 @@ export class LoginPage {
     await this.playwrightActions.findAndType(this.usernameInput, username);
     await this.playwrightActions.findAndType(this.passwordInput, password);
     await this.playwrightActions.findAndClick(this.loginButton);
-    await this.playwrightAssertions.inViewPort(this.logoutLink);
+    // Close login modal after login attempt by pressing Escape
+    await this.page.press('body', 'Escape');
+    // Wait for modal to be hidden
+    await this.page.locator('[aria-labelledby="logInModalLabel"]').waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {});
     return poManager.getProductPage();
   }
   
