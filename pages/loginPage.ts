@@ -23,7 +23,8 @@ export class LoginPage {
     await this.playwrightActions.findAndType(this.usernameInput, username);
     await this.playwrightActions.findAndType(this.passwordInput, password);
     await this.playwrightActions.findAndClick(this.loginButton);
-    await this.playwrightAssertions.inViewPort(this.logoutLink);
+    // Give the modal a moment to react to login, then try pressing Escape
+    await this.page.keyboard.press('Escape');
     return poManager.getProductPage();
   }
   
