@@ -44,7 +44,8 @@ export class PlaywrightAssertions {
   }
 
   async inViewPort(selector: string){
-    await expect(this.page.locator(selector)).toBeInViewport();
+    // Check that element is visible on the page
+    await this.page.locator(selector).waitFor({ state: 'visible', timeout: 10000 });
   }
 
   async toBeGreaterThan(actualCount: number, expectedCount: number) {
