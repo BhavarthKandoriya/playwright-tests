@@ -15,6 +15,8 @@ export class PlaywrightActions {
   /*Function to find an element and click on it. Use this function by findAndClick('Your selector'). Delay option is also exposed to put some delay between between mousedown and mouseup. 
     This option can be used when click is happening too fast and UI does not able to identify and act on that click event. Refer for more details https://playwright.dev/docs/api/class-page#page-click*/
   async findAndClick(selector: string, delay = 0, force = false) {
+    // Wait for element to be ready before clicking
+    await this.page.locator(selector).waitFor({ state: 'visible', timeout: 10000 });
     await this.page.locator(selector).click({ delay: delay , force : force});
   }
 
