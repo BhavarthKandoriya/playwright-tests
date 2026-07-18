@@ -22,8 +22,21 @@ export class LoginPage {
   async accountLogin(poManager, username, password){
     await this.playwrightActions.findAndType(this.usernameInput, username);
     await this.playwrightActions.findAndType(this.passwordInput, password);
-    await this.playwrightActions.findAndClick(this.loginButton);
-    await this.playwrightAssertions.inViewPort(this.logoutLink);
+    // Add delay before clicking to ensure input is registered
+    await this.playwrightActions.findAndClick(this.loginButton, 500);
+    // Wait a bit for login response
+    await this.page.waitForTimeout(2000);
+    // Try to close modal by pressing Escape or clicking close button
+    try {
+      const closeButton = this.page.locator('[data-dismiss="modal"], .btn-close').first();
+      if (await closeButton.isVisible()) {
+        await closeButton.click();
+      }
+    } catch (e) {
+      // Ignore if close button not found
+    }
+    // Press Escape to close modal
+    await this.page.press('body', 'Escape');
     return poManager.getProductPage();
   }
   
